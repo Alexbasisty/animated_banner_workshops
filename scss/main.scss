@@ -1,0 +1,350 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --star: lightskyblue;
+  --square: #2FEB73;
+  --hexagon: red;
+  --circle: orange;
+}
+
+.banner {
+  overflow: hidden;
+  width: 800px;
+  height: 300px;
+  padding: 30px;
+  border: 1px solid black;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .text {
+      width: 250px;
+      text-align: left;
+    }
+  }
+
+  .candy {
+    animation: candyMove 3.5s, textToStart 2s 8s, hidingToLeft 10s 19s ease-in;
+    animation-fill-mode: forwards;
+    transform: translateY(-130px);
+
+    .image {
+      animation: imageToEnd 2s 8s, changeColor 1s 15s steps(6), rotateToLeft 10s 19s;
+      animation-fill-mode: forwards;
+      margin: 17px 0;
+      position: relative;
+      display: block;
+      color: var(--star);
+      width: 0;
+      height: 0;
+      border-right: 33px solid transparent;
+      border-bottom: 23px solid var(--star);
+      border-left: 33px solid transparent;
+      transform: rotate(35deg);
+
+      &:before {
+        border-bottom: 26px solid var(--star);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        position: absolute;
+        height: 0;
+        width: 0;
+        top: -15px;
+        left: -22px;
+        display: block;
+        content: '';
+        transform: rotate(-35deg);
+      }
+
+      &:after {
+        position: absolute;
+        display: block;
+        color: var(--star);
+        top: 1px;
+        left: -35px;
+        width: 0;
+        height: 0;
+        border-right: 33px solid transparent;
+        border-bottom: 23px solid var(--star);
+        border-left: 33px solid transparent;
+        transform: rotate(-70deg);
+        content: '';
+      }
+    }
+  }
+
+  .cake {
+    transform: translateY(-180px);
+    animation: candyMove 4s 1.5s, textToStart 2s 10s, hidingToRight 10s 19s ease-in;
+    animation-fill-mode: forwards;
+
+    .image {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      animation: imageToEnd 2s 10s, changeColor 1s 16s steps(6), rotateToRight 10s 19s;
+      animation-fill-mode: forwards;
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: var(--square);
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .gummy {
+    transform: translateY(-280px);
+    animation: candyMove 6s 1.5s, textToStart 2s 12s, hidingToLeft 10s 19s ease-in;
+    animation-fill-mode: forwards;
+
+    .image {
+      width: 50px;
+      height: 27px;
+      background: var(--hexagon);
+      position: relative;
+      animation: imageToEnd 2s 12s, changeColor 1s 17s steps(6), rotateToLeft 10s 19s;
+      animation-fill-mode: forwards;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -13px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 13px solid var(--hexagon);
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -13px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 13px solid var(--hexagon);
+      }
+    }
+  }
+
+  .halvah {
+    transform: translateY(-350px);
+    animation: candyMove 8s 2s, textToStart 2s 14s, hidingToRight 10s 19s ease-in;
+    animation-fill-mode: forwards;
+
+    .image {
+      position: relative;
+      height: 50px;
+      width: 50px;
+      animation: imageToEnd 2s 14s, changeColor 1s 18s steps(6);
+      animation-fill-mode: forwards;
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: var(--circle);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+@keyframes candyMove {
+  from {
+
+  }
+  to {
+    transform: translateY(0);
+
+  }
+}
+
+@keyframes textToStart {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateX(-130px);
+  }
+}
+
+@keyframes imageToEnd {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateX(260px);
+  }
+}
+
+@keyframes changeColor {
+  0% {
+    --star: lightskyblue;
+    --square: #2FEB73;
+    --hexagon: red;
+    --circle: orange;
+  }
+  100% {
+       --star: blue;
+      --square: violet;
+      --hexagon: lightgrey;
+      --circle: black;
+  }
+}
+
+@keyframes hidingToLeft {
+  from {
+    transform: translate(-130px, 0);
+  }
+  to {
+    transform: translateX(-900px);
+  }
+}
+
+@keyframes hidingToRight {
+  from {
+    transform: translate(-130px, 0);
+  }
+  to {
+    transform: translateX(900px);
+  }
+}
+
+@keyframes rotateToLeft {
+  from {
+    transform: translateX(260px) rotate(0);
+  }
+  to {
+    transform: translateX(-160px) rotate(-360deg);
+  }
+}
+@keyframes rotateToRight {
+  from {
+    transform: translateX(260px) rotate(0);
+  }
+  to {
+    transform: translateX(400px) rotate(360deg);
+  }
+}
+
+// second part
+
+div.second-part {
+  transform: scale(0.0001);
+  bottom: -100px;
+  position: absolute;
+
+  &.bar {
+    animation: secondPartBarAppears 25s 30s linear;
+    animation-fill-mode: forwards;
+    font-weight: bold;
+  }
+
+  &.sweet {
+    animation: secondPartSweetAppears 25s 30s linear;
+    animation-fill-mode: forwards;
+    border: 1px solid black;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 4px;
+  }
+
+  &.danish {
+    animation: secondPartDanishAppears 25s 30s linear;
+    animation-fill-mode: forwards;
+    font-family: 'Dancing Script', cursive;
+  }
+}
+
+@keyframes secondPartBarAppears {
+  0% {
+    bottom: 200px;
+    transform: translate(280px, -20px) scale(0.0001);
+    opacity: 1;
+  }
+  25% {
+    bottom: 200px;
+    transform: translate(280px, -20px) scale(1.5);
+    opacity: 1;
+  }
+  65% {
+    bottom: 200px;
+    transform: translate(280px, -20px) scale(1.5) rotateX(360deg);
+    opacity: 1;
+  }
+  100% {
+    bottom: 200px;
+    opacity: 0;
+    transform: translate(280px, -20px) scale(0.00001) rotateX(360deg);
+  }
+}
+@keyframes secondPartSweetAppears {
+  0% {
+    bottom: 200px;
+    transform: translate(0, -120px) scale(0.0001);
+    opacity: 1;
+  }
+  15% {
+    bottom: 200px;
+    transform: translate(30px, 30px) scale(0.5);
+    opacity: 1;
+  }
+  25% {
+    bottom: 200px;
+    transform: translate(340px, 30px) scale(1.5);
+    opacity: 1;
+  }
+  65% {
+    bottom: 200px;
+    transform: translate(340px, 30px) scale(1.5) rotateX(360deg);
+    opacity: 1;
+  }
+  100% {
+    bottom: 200px;
+    opacity: 0;
+    transform: translate(280px, -20px) scale(0.00001) rotateX(360deg);
+  }
+
+}
+@keyframes secondPartDanishAppears {
+  0% {
+    bottom: 200px;
+    transform: translate(280px, 80px) scale(0.0001);
+    opacity: 1;
+  }
+  25% {
+    bottom: 200px;
+    transform: translate(280px, 80px) scale(1.5);
+    opacity: 1;
+  }
+  65% {
+    bottom: 200px;
+    transform: translate(280px, 80px) scale(1.5) rotateX(360deg);
+    opacity: 1;
+  }
+  100% {
+    bottom: 200px;
+    opacity: 0;
+    transform: translate(280px, -20px) scale(0.00001) rotateX(360deg);
+  }
+}
